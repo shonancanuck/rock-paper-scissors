@@ -36,16 +36,29 @@ function getComputerChoice() {
 }
 
 function checkScore() {
+  const reset = document.createElement("button");
+  reset.innerText = "Play Again";
+  reset.addEventListener("click", () => {
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreDisplay.innerText = playerScore;
+    computerScoreDisplay.innerText = computerScore;
+    display.style.borderColor = "black";
+    playerScoreDisplay.style.borderColor = "black";
+    computerScoreDisplay.style.borderColor = "black";
+    reset.remove();
+  })
   if (playerScore > 4) {
     display.style.borderColor = "blue";
     playerScoreDisplay.style.borderColor = "blue";
     computerScoreDisplay.style.borderColor = "orange";
-    display.innerText = "You win!";
+    document.querySelector(".main").appendChild(reset);
+    
   } else if (computerScore > 4) {
     display.style.borderColor = "orange";
     playerScoreDisplay.style.borderColor = "orange";
     computerScoreDisplay.style.borderColor = "blue";
-    display.innerText = "Computer Wins!";
+    document.querySelector(".main").appendChild(reset);
   }
 }
 
